@@ -5,10 +5,12 @@ var noresults = function() {
   $('.noresults').fadeIn();
 };
 
-var displayresults = function(doctor) {
+var displayresults = function(doctor_list) {
   $('.noresults').hide();
   $('.displayresults').empty();
-  $('.displayresults').append("<h3>here are some doctors you might be interested in seeing: "+doctor.list+"</h3>");
+  doctor_list.forEach(function(doctor){
+    $('.displayresults').append("<h3>here are some doctors you might be interested in seeing: "+doctor.list+"</h3>");
+  })
   $('.displayresults').fadeIn();
 };
 
