@@ -1,6 +1,6 @@
 var apiKey = require('./../.env').apiKey;
 
-function Doctor(name,specialty,description,phone_number,phone_type,accepts_new_patients,ratings) {
+function Doctor(name,specialty,description,phone_number,phone_type,accepts_new_patients,ratings,address,website) {
   this.name = name;
   this.specialty = specialty;
   this.description = description;
@@ -8,6 +8,8 @@ function Doctor(name,specialty,description,phone_number,phone_type,accepts_new_p
   this.phone_type = phone_type;
   this.accepts_new_patients = accepts_new_patients;
   this.ratings = ratings;
+  this.address = address;
+  this.website = website;
 }
 
 Doctor.prototype.getDoctors = function(medicalIssue,lat,lon,noresults,displayresults) {
@@ -19,16 +21,26 @@ Doctor.prototype.getDoctors = function(medicalIssue,lat,lon,noresults,displayres
       if(response.data.length > 0) {
         console.log(response);
         var doctor_list = [];
-        for(var i = 0; i<response.data.length; i++){
+        for(var i=0; i<response.data.length; i++){
           for(var j=0; j<response.data[i].practices.length;j++){
-            name = response.data[i].practices[j].name;
-            specialty = response.data[i].specialties[0].actor;
-            description = response.data[i].specialties[0].description;
-            phone_number = response.data[i].practices[j].phones[0].number;
-            phone_type = response.data[i].practices[j].phones[0].type;
-            accepts_new_patients = response.data[i].practices[j].accepts_new_patients;
-            ratings = response.data[i].ratings;
-            new_doctor = new Doctor(name,specialty,description,phone_number,phone_type,accepts_new_patients,ratings);
+            var name = response.data[i].practices[j].name;
+            var specialty = response.data[i].specialties[0].actor;
+            var description = response.data[i].specialties[0].description;
+            var phone_number = response.data[i].practices[j].phones[0].number;
+            var phone_type = response.data[i].practices[j].phones[0].type;
+            var accepts_new_patients;
+            if (response.data[i].practices[j].accepts_new_patients) {
+              accepts_new_patients = 'accepting new patients';
+            } else {
+              accepts_new_patients = 'NOT accepting new patients';
+            }
+            var ratings = response.data[i].ratings;
+            var address = response.data[i].practices[j].visit_address.street + ' ' + response.data[i].practices[j].visit_address.city + ', ' +response.data[i].practices[j].visit_address.state + ' ' + response.data[i].practices[j].visit_address.zip;
+            var website = '/nowebsite';
+            if (typeof response.data[i].practices[j].website != 'undefined') {
+               website = response.data[i].practices[j].website;
+            }
+            new_doctor = new Doctor(name,specialty,description,phone_number,phone_type,accepts_new_patients,ratings,address,website);
             doctor_list.push(new_doctor);
           }
         }

@@ -9,7 +9,7 @@ var displayresults = function(doctor_list) {
   $('.noresults').hide();
   $('.displayresults').empty();
   doctor_list.forEach(function(doctor){
-    $('.displayresults').append("<h3>"+doctor.name+"</h3><h4 class='pull-right'><i>"+doctor.specialty+"</i></h4><h4>"+doctor.description+"</h4><h4>"+doctor.phone_type+": "+doctor.phone_number+"</h4>");
+    $('.displayresults').append("<div class='panel panel-info'><div class='panel-heading'><h4 class='pull-right'><i>"+doctor.specialty+"</i></h4><h3>"+doctor.name+"</h3></div><div class='panel-body'><h4 class='display-block'>"+doctor.description+"</h4><h4><i>"+doctor.accepts_new_patients+"</i></h4><h4><a href='"+doctor.website+"' target='_blank'>Website of "+doctor.name+"</a></h4><h4>"+doctor.phone_type+": "+doctor.phone_number+"</h4><h4 class='pull-right'><i>"+doctor.address+"</i></h4></div></div>");
   });
   $('.displayresults').fadeIn();
 };
