@@ -7,6 +7,7 @@ function Doctor(name,specialty,description,phone_number,phone_type,accepts_new_p
   this.phone_number = phone_number;
   this.phone_type = phone_type;
   this.accepts_new_patients = accepts_new_patients;
+  this.ratings = ratings;
 }
 
 Doctor.prototype.getDoctors = function(medicalIssue,lat,lon,noresults,displayresults) {

@@ -9,8 +9,8 @@ var displayresults = function(doctor_list) {
   $('.noresults').hide();
   $('.displayresults').empty();
   doctor_list.forEach(function(doctor){
-    $('.displayresults').append("<h3>here are some doctors you might be interested in seeing: "+doctor.list+"</h3>");
-  })
+    $('.displayresults').append("<h3>"+doctor.name+"</h3><h4 class='pull-right'><i>"+doctor.specialty+"</i></h4><h4>"+doctor.description+"</h4><h4>"+doctor.phone_type+": "+doctor.phone_number+"</h4>");
+  });
   $('.displayresults').fadeIn();
 };
 
