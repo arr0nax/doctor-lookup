@@ -1,0 +1,25 @@
+{
+  "name": "find-doctor",
+  "description": "an app to help find doctors",
+  "main": "index.js",
+  "authors": [
+    "clayton"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "doctor",
+    "find"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.0",
+    "bootstrap": "^3.3.7"
+  }
+}
