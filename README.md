@@ -1,6 +1,6 @@
-# GROWTH
+# Doctor Lookup
 
-#### A Growing Game, March, 2017
+#### A Way To Find Doctors, March, 2017
 
 #### By **Clayton Collins**
 
